@@ -1,6 +1,7 @@
 package at.spengergasse.ft2021pos1.part1.domain;
 
 import lombok.*;
+import lombok.experimental.SuperBuilder;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
@@ -10,7 +11,6 @@ import javax.persistence.Table;
 @Table(name = "uploads_done")
 @DiscriminatorValue("uploads_done")
 
-@AllArgsConstructor
 @NoArgsConstructor
 @Builder
 @Setter

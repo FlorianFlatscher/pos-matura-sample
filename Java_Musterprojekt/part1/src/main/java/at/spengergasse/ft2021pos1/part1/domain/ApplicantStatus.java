@@ -1,6 +1,7 @@
 package at.spengergasse.ft2021pos1.part1.domain;
 
 import lombok.*;
+import lombok.experimental.SuperBuilder;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
 import javax.persistence.*;
@@ -11,13 +12,8 @@ import javax.persistence.*;
 @DiscriminatorColumn(name = "type")
 
 @AllArgsConstructor
-@NoArgsConstructor
-@Builder
 @Setter
 @Getter
 @EqualsAndHashCode(callSuper = true)
 public abstract class ApplicantStatus extends AbstractPersistable<Long> {
-
-
-
 }

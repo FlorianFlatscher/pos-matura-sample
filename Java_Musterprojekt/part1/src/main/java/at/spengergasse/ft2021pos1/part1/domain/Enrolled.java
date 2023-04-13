@@ -1,6 +1,7 @@
 package at.spengergasse.ft2021pos1.part1.domain;
 
 import lombok.*;
+import lombok.experimental.SuperBuilder;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
@@ -10,9 +11,8 @@ import javax.persistence.Table;
 @Table(name = "enrolled")
 @DiscriminatorValue("enrolled")
 
+@Builder()
 @AllArgsConstructor
-@NoArgsConstructor
-@Builder
 @Setter
 @Getter
 @EqualsAndHashCode(callSuper = true)

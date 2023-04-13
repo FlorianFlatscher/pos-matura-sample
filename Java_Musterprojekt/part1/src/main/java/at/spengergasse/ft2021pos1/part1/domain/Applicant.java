@@ -37,6 +37,7 @@ public class Applicant extends AbstractPersistable<Long> {
     private Department department;
 
     @OneToOne
-    private ApplicantStatus applicantStatus;
+    @Builder.Default
+    private ApplicantStatus applicantStatus = new Enrolled();
 
 }
