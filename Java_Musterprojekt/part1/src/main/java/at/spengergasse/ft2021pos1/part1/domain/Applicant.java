@@ -5,6 +5,7 @@ import org.springframework.data.jpa.domain.AbstractPersistable;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -30,13 +31,25 @@ public class Applicant extends AbstractPersistable<Long> {
     @Enumerated(EnumType.STRING)
     private Gender gender;
 
-    @OneToMany(mappedBy = "applicant")
-    private List<Upload> upload;
+    @OneToMany(mappedBy = "applicant", cascade = CascadeType.PERSIST)
+    @Builder.Default
+    private List<Upload> upload = new ArrayList<>();
+
+    public void setUpload(List<Upload> upload) {
+        this.upload.clear();
+        this.upload.addAll(upload);
+        upload.forEach(u -> u.setApplicant(this));
+    }
+
+    public void addUpload(Upload upload) {
+        this.upload.add(upload);
+        upload.setApplicant(this);
+    }
 
     @ManyToOne
     private Department department;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.PERSIST)
     @Builder.Default
     private ApplicantStatus applicantStatus = new Enrolled();
 

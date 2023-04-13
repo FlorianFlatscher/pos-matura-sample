@@ -64,7 +64,7 @@ public class PersistenceTest {
 
         // not present
         repository.delete(entity);
-        assertThat(repository.findById(Objects.requireNonNull(entity.getId())).isPresent()).isFalse();
+        assertThat(repository.findById(Objects.requireNonNull(entity.getId()))).isNotPresent();
 
         // empty
         assertThat(repository.findAll().size()).isEqualTo(0);
