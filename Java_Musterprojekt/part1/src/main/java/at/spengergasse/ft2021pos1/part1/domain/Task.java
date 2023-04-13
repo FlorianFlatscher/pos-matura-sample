@@ -7,6 +7,7 @@ import org.springframework.data.jpa.domain.AbstractPersistable;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "task")
@@ -18,6 +19,9 @@ import javax.persistence.Table;
 @Getter
 @EqualsAndHashCode(callSuper = true)
 public class Task extends AbstractPersistable<Long> {
+
+    private LocalDateTime dateFrom;
+    private LocalDateTime dateTo;
 
     @ManyToOne
     private Department department;

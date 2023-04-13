@@ -4,6 +4,7 @@ import lombok.*;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.List;
 
 @Entity
@@ -16,6 +17,15 @@ import java.util.List;
 @Getter
 @EqualsAndHashCode(callSuper = true)
 public class Applicant extends AbstractPersistable<Long> {
+
+    @Embedded
+    private HumanName name;
+
+    private LocalDate dateOfBirth;
+
+    private String email;
+
+    private String phoneNumber;
 
     @Enumerated(EnumType.STRING)
     private Gender gender;

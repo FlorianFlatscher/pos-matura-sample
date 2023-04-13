@@ -3,9 +3,7 @@ package at.spengergasse.ft2021pos1.part1.domain;
 import lombok.*;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
@@ -18,6 +16,10 @@ import java.util.List;
 @Getter
 @EqualsAndHashCode(callSuper = true)
 public class Department extends AbstractPersistable<Long> {
+
+    @Column(nullable = false, unique = true)
+    private String name;
+
 
     @OneToMany
     private List<Task> task;
